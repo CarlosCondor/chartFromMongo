@@ -2,6 +2,9 @@
 
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, '..'))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -52,7 +55,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = "/home/jcdelgado/eGarbage/chartshow/web/chartshow/chartshow/static"
+MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'static'))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -74,7 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/home/jcdelgado/eGarbage/chartshow/web/chartshow/chartshow/static"
+    os.path.abspath(os.path.join(BASE_DIR, 'static'))
 
 )
 
@@ -115,8 +118,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.dirname(os.path.abspath(__file__)) + "templates",
-    "/home/jcdelgado/eGarbage/chartshow/web/chartshow/chartshow/templates"
+    os.path.abspath(os.path.join(BASE_DIR, 'templates')),
+    #"/home/jcdelgado/eGarbage/chartshow/web/chartshow/chartshow/templates"
 )
 
 INSTALLED_APPS = (
