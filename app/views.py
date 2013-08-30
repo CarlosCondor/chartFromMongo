@@ -11,6 +11,12 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         db = MongoClient('localhost', 27017).egarbage
+        measures = db.measures
+        cursor = measures.find()
+        measure_list = []
+        for n in range(cursor.count())
+            measure_list.append(cursor.next())
+        print "Match %s results" % len(measure_list)
 
         context = super(HomePageView, self).get_context_data(**kwargs)
 
