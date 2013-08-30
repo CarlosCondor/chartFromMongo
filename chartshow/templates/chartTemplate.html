@@ -13,8 +13,11 @@
     $(function() {
 
         var d = {{ chartdata }};
-
-
+/*
+        for (var x = 0; x < chardata.length; x++) {
+            chardata[x] = [chardata[x][0]*1000,chardata[x][1]];
+        }
+*/
         $.plot("#placeholder", [d], {
             xaxis: { mode: "time" },
             yaxis: {max: 200 },
