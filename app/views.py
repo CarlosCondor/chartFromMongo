@@ -17,7 +17,7 @@ class HomePageView(TemplateView):
         for n in range(cursor.count()):
             next = cursor.next()
 
-            chartdata = [int(next['date'].strftime("%s"))*1000, next['measure']]
+            chartdata = [float(next['date'].strftime("%s")*1000), next['measure']]
             measure_list.append(chartdata)
         print "Match %s results" % len(measure_list)
 
