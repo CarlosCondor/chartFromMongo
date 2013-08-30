@@ -26,7 +26,7 @@ class HomePageView(TemplateView):
             next = cursor2.next()
             chartdata = [float(next['date'].strftime("%s")), next['measure']]
             measure_list2.append(chartdata)
-        print "Match %s results" % len(measure_list)
+        print "Match %s results" % len(measure_list2)
 
 
         context = super(HomePageView, self).get_context_data(**kwargs)
