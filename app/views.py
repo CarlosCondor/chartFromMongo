@@ -15,11 +15,15 @@ class HomePageView(TemplateView):
         cursor = measures.find()
         measure_list = []
         for n in range(cursor.count()):
-            measure_list.append(cursor.next())
+            next = cursor.next()
+
+            chartdata = [int(next['date'].strftime("%s")), next['measure']]
+            measure_list.append(chartdata)
         print "Match %s results" % len(measure_list)
 
-        context = super(HomePageView, self).get_context_data(**kwargs)
 
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['chartdata'] = measure_list
         #context['latest_articles'] = Article.objects.all()[:5]
         return context
 
