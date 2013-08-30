@@ -10,11 +10,11 @@ class HomePageView(TemplateView):
     template_name = "chartTemplate.html"
 
     def get_context_data(self, **kwargs):
-        db = MongoClient('localhost', 27017).egarbage
+        db = MongoClient().egarbage
         measures = db.measures
         cursor = measures.find()
         measure_list = []
-        for n in range(cursor.count())
+        for n in range(cursor.count()):
             measure_list.append(cursor.next())
         print "Match %s results" % len(measure_list)
 
