@@ -15,6 +15,7 @@
 
 		// setup plot
 		var chartdatas = {{ chartdatas }};
+		var chartlabels = {{chartlabels }};
 
 
        for (var x =  0;x < chartdatas.length;x++) {
@@ -38,7 +39,7 @@
                 }
             },
 			legend: {
-				show: false
+				show: true
 			},
 			selection: {
 				mode: "xy"
@@ -46,7 +47,7 @@
 		};
 		var alldata = []
 		for (var i = 0; i < chartdatas.length;i++) {
-			alldata.push({data: chartdatas[i], label: "Sensor "+ i});
+			alldata.push({label: "hola", data: chartdatas[i], label: chartlabels[i]});
 		}
 		console.log(alldata);
 		var plot = $.plot("#placeholder", alldata, options);

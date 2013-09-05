@@ -32,6 +32,7 @@ class HomePageView(TemplateView):
         context = super(HomePageView, self).get_context_data(**kwargs)
     
         context['chartdatas'] = chartdatas
+        context['chartlabels'] = distintos
         #context['latest_articles'] = Article.objects.all()[:5]
         return context
 
