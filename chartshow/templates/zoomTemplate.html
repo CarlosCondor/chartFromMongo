@@ -15,8 +15,7 @@
 
 		// setup plot
 		var chartdatas = {{ chartdatas }};
-		var d = {{ chartdata }};
-        var d2 = {{ chartdata2 }};
+
 
        for (var x =  0;x < chartdatas.length;x++) {
        		console.log(x);
@@ -25,12 +24,7 @@
             	asd[i] = [asd[i][0]*1000,asd[i][1]];
         	}
         };
-        for (var x = 0; x < d.length; x++) {
-            d[x] = [d[x][0]*1000,d[x][1]];
-        }
-        for (var x = 0; x < d2.length; x++) {
-            d2[x] = [d2[x][0]*1000,d2[x][1]];
-        }
+      
 
 		var options = {
 			xaxis: { mode: "time", minTickSize: [5, "minute"] },
@@ -61,7 +55,7 @@
 
 		// Create the overview plot
 
-		var overview = $.plot("#overview", [{data: d, label: "Sensor 4098"},{data: d2, label:"Sensor 4101"}], {
+		var overview = $.plot("#overview", alldata, {
 			legend: {
 				show: false
 			},
