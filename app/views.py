@@ -16,6 +16,7 @@ class HomePageView(TemplateView):
         cursores = []
         chartdatas = []
         syncerrors = []
+        synctime = 0
         for ide in distintos:
             cursores.append(measures.find({"id_device": ide}))
         ccc=0
@@ -25,8 +26,12 @@ class HomePageView(TemplateView):
                 next = c.next()
                 chartdata = [float(next['date'].strftime("%s")), next['measure']]
                 tempdatas.append(chartdata)
+
             if (float(datetime.datetime.now().strftime("%s"))-tempdatas[-1][0]) > 10*60:
                 syncerrors.append("%s no sincroniza desde %s" % (distintos[ccc], datetime.datetime.fromtimestamp(float(tempdatas[-1][0]))))
+            else:
+                synctime = tempdatas[-1][0]-tempdatas[-2][0]
+
             print tempdatas[-1]
             chartdatas.append(tempdatas)
             ccc+=1
@@ -40,6 +45,7 @@ class HomePageView(TemplateView):
         context['chartdatas'] = chartdatas
         context['chartlabels'] = distintos
         context['syncerrors'] = syncerrors
+        context['synctime'] = synctime
         #context['latest_articles'] = Article.objects.all()[:5]
         return context
 
