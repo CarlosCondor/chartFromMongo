@@ -16,7 +16,7 @@
 		var synctime = {{synctime}}*1000;
 
 		var synctimeleft = (lastsync-synctime) - new Date().getTime();
-		$('#synctimeleft').html(synctimeleft/1000);
+		$('#synctimeleft').html(synctimeleft/1000/60 + "minutos, "+synctimeleft/1000%60);
 
 		// setup plot
 		var chartdatas = {{ chartdatas }};
