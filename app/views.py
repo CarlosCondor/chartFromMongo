@@ -14,6 +14,21 @@ class HomePageView(TemplateView):
         measures = db.measures
         cursor1 = measures.find({"id_device": 4098})
         cursor2 = measures.find({"id_device": 4101})
+        distintos = measures.distinct("id_device")
+        cursores = []
+        chartdatas = []
+        for ide in distintos:
+            cursores.append(measures.find({"id_device": ide}))
+
+        for c in cursores:
+            tempdatas = []
+            for n in range(c.count()):
+                next = c.next()
+                chartdata = [float(next['date'].strftime("%s")), next['measure']]
+                tempdatas.append(chartdata)
+            chartdatas.append(tempdatas)
+
+        print "Distintos: ", distintos
         measure_list = []
         measure_list2 = []
         for n in range(cursor1.count()):
@@ -32,6 +47,7 @@ class HomePageView(TemplateView):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context['chartdata'] = measure_list
         context['chartdata2'] = measure_list2
+        context['chartdatas'] = chartdatas
         #context['latest_articles'] = Article.objects.all()[:5]
         return context
 

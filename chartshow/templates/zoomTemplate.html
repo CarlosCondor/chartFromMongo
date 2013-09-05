@@ -14,10 +14,17 @@
 	$(function() {
 
 		// setup plot
-
+		var chartdatas = {{ chartdatas }};
 		var d = {{ chartdata }};
         var d2 = {{ chartdata2 }};
 
+       for (var x =  0;x < chartdatas.length;x++) {
+       		console.log(x);
+        	var asd = chartdatas[x];
+        	for (var i = 0; i < asd.length; i++) {
+            	asd[i] = [asd[i][0]*1000,asd[i][1]];
+        	}
+        };
         for (var x = 0; x < d.length; x++) {
             d[x] = [d[x][0]*1000,d[x][1]];
         }
@@ -43,9 +50,14 @@
 				mode: "xy"
 			}
 		};
-
-
-		var plot = $.plot("#placeholder", [{data: d, label: "Sensor 4098"},{data: d2, label:"Sensor 4101"}], options);
+		var alldata = []
+		for (var i = 0; i < chartdatas.length;i++) {
+			alldata.push({data: chartdatas[i], label: "Sensor "+ i});
+		}
+		console.log(alldata);
+		console.log([{data: d, label: "Sensor 4098"},{data: d2, label:"Sensor 4101"}]);
+		var plot = $.plot("#placeholder", alldata, options);
+		//var plot = $.plot("#placeholder", [{data: d, label: "Sensor 4098"},{data: d2, label:"Sensor 4101"}], options);
 
 		// Create the overview plot
 
