@@ -94,7 +94,7 @@
 
 			// do the zooming
 
-			plot = $.plot("#placeholder", [{data: d, label: "Sensor 4098"},{data: d2, label:"Sensor 4101"}],
+			plot = $.plot("#placeholder", alldata,
 				$.extend(true, {}, options, {
 					xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to },
 					yaxis: { min: ranges.yaxis.from, max: ranges.yaxis.to }
