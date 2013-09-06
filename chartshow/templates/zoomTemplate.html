@@ -18,7 +18,7 @@
 		var nextsync = lastsync+synctime;
 
 		var synctimeleft = nextsync - new Date().getTime();
-		$('#synctimeleft').html(new Date(nextsync));
+		$('#synctimeleft').html((new Date(nextsync)).toDateString());
 
 		// setup plot
 		var chartdatas = {{ chartdatas }};
