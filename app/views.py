@@ -38,8 +38,9 @@ class HomePageView(TemplateView):
                     lastsync = tempdatas[-1][0]
                     print "synctime: ", synctime
                 except:
-                    continue
+                    pass
                 i+=1
+                
 
             print tempdatas[-1]
             chartdatas.append(tempdatas)
