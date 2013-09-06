@@ -14,6 +14,7 @@
 	$(function() {
 		var lastsync = {{lastsync}}*1000;
 		var synctime = {{synctime}}*1000;
+		var timeleft = {{timeleft}};
 		var nextsync = lastsync+synctime;
 
 		var synctimeleft = nextsync - new Date().getTime();

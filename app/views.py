@@ -33,9 +33,12 @@ class HomePageView(TemplateView):
             
             i=0
             while synctime < 5 or i < 5:
-                synctime = tempdatas[-1][0]-tempdatas[-i][0]
-                lastsync = tempdatas[-1][0]
-                print "synctime: ", synctime
+                try:
+                    synctime = tempdatas[-1][0]-tempdatas[-i][0]
+                    lastsync = tempdatas[-1][0]
+                    print "synctime: ", synctime
+                except:
+                    continue
                 i+=1
 
             print tempdatas[-1]
@@ -53,6 +56,9 @@ class HomePageView(TemplateView):
         context['syncerrors'] = syncerrors
         context['synctime'] = synctime
         context['lastsync'] = lastsync
+        nextsync = lastsync+synctime
+        timeleft =  nextsync - float(datetime.datetime.now().strftime("%s"))
+        context['timeleft'] = timeleft
         #context['latest_articles'] = Article.objects.all()[:5]
         return context
 
