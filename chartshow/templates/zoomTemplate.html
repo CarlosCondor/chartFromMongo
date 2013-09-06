@@ -14,9 +14,10 @@
 	$(function() {
 		var lastsync = {{lastsync}}*1000;
 		var synctime = {{synctime}}*1000;
+		var nextsync = lastsync+synctime;
 
-		var synctimeleft = (lastsync-synctime) - new Date().getTime();
-		$('#synctimeleft').html(synctimeleft/1000/60 + "minutos, "+synctimeleft/1000%60);
+		var synctimeleft = nextsync - new Date().getTime();
+		$('#synctimeleft').html(synctimeleft);
 
 		// setup plot
 		var chartdatas = {{ chartdatas }};
