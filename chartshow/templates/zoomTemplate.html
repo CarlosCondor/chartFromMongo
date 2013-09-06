@@ -35,7 +35,7 @@
       
 
 		var options = {
-			xaxis: { mode: "time", minTickSize: [5, "minute"] },
+			xaxis: { mode: "time", minTickSize: [5, "minute"],  timeZoneOffset: (new Date()).getTimezoneOffset() },
             yaxis: {max: 200 },
             series: {
                 lines: {
@@ -74,7 +74,7 @@
 				},
 				shadowSize: 0
 			},
-			xaxis: { mode: "time", minTickSize: [5, "minute"], ticks: 4 },
+			xaxis: { mode: "time", minTickSize: [5, "minute"], ticks: 4,  timeZoneOffset: (new Date()).getTimezoneOffset() },
 			yaxis: {
 				ticks: 3,
 				max: 200
