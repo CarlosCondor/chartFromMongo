@@ -11,9 +11,9 @@
 	<script language="javascript" type="text/javascript" src="/media/jquery.flot.selection.js"></script>
 	<script type="text/javascript">
 
-	$(function() {
-		var lastsync = {{lastsync}}*1000;
-		var synctime = {{synctime}}*1000;
+	$(function() { 
+		var lastsync = {{lastsync}}*1000 - (1000*60*60*3);
+		var synctime = {{synctime}}*1000 - (1000*60*60*3);
 		var timeleft = {{timeleft}};
 		var nextsync = lastsync+synctime;
 
@@ -29,7 +29,7 @@
        		console.log(x);
         	var asd = chartdatas[x];
         	for (var i = 0; i < asd.length; i++) {
-            	asd[i] = [asd[i][0]*1000,asd[i][1]];
+            	asd[i] = [asd[i][0]*1000-(1000*60*60*3),asd[i][1]];
         	}
         };
       
